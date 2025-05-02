@@ -36,6 +36,31 @@ function Library:Create(name,subname,keybind)
         local UICorner=Instance.new("UICorner")
         UICorner.CornerRadius=UDim.new(0,70)
         UICorner.Parent=Main
+	local ToggleUI=Instance.new("Frame")
+        local TextButton=Instance.new("TextButton")
+        ToggleUI.Size=UDim2.new(0,150,0,50)
+        ToggleUI.Position=UDim2.new(0,0,0.5,-25)
+        ToggleUI.BackgroundColor3=Color3.fromRGB(0,0,0)
+        ToggleUI.BorderSizePixel=0
+        ToggleUI.Parent=xz
+        TextButton.Size=UDim2.new(1,0,1,0)
+        TextButton.BackgroundTransparency=1
+        TextButton.Text="Toggle UI"
+        TextButton.Font=Enum.Font.RobotoMono
+        TextButton.TextSize=18
+        TextButton.TextColor3=Color3.fromRGB(255,255,255)
+        TextButton.TextXAlignment=Enum.TextXAlignment.Left
+        TextButton.Parent=ToggleUI
+        local function toggleMain()
+        for _,obj in pairs(game:GetService("CoreGui"):GetChildren())do
+        if obj.Name=="Main"and obj.Parent and obj.Parent.Name=="abcdefghijklmnopqrstuvwxyz"then
+        obj.Visible=not obj.Visible
+        end
+        end
+        end
+        TextButton.MouseButton1Click:Connect(function()
+        toggleMain()
+        end)
 	Title.Name = "Title"
 	Title.Parent = Main
 	Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
