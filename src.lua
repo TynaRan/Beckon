@@ -32,9 +32,9 @@ function Library:Create(name,subname,keybind)
 	Main.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
 	Main.BorderSizePixel = 0
 	Main.Position = UDim2.new(0, 192, 0, 224)
-	Main.Size = UDim2.new(0,950,0,500)
+	Main.Size = UDim2.new(0,950,0,750)
         local UICorner=Instance.new("UICorner")
-        UICorner.CornerRadius=UDim.new(0,20)
+        UICorner.CornerRadius=UDim.new(0,40)
         UICorner.Parent=Main
 	Title.Name = "Title"
 	Title.Parent = Main
