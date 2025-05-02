@@ -1,5 +1,5 @@
 local lib=loadstring(game:HttpGet("https://raw.githubusercontent.com/TynaRan/Beckon/refs/heads/main/src.lua"))()
-local win=lib:Create("AimViewer","ProVersion")
+local win=lib:Create("AimViewer V2","ProVersion")
 local userTab=win:tab("User",true)
 local aimTab=win:tab("Aiming",true)
 local visualTab=win:tab("Visual",true)
