@@ -55,9 +55,9 @@ function Library:Create(name,subname,keybind)
 	--SubTitle.Size = UDim2.new(0, 179, 0, 18)
 	--SubTitle.Font = Enum.Font.Gotham
 	--SubTitle.Text = subname
-	SubTitle.TextColor3 = Color3.fromRGB(157, 157, 157)
-	SubTitle.TextSize = 12.000
-	SubTitle.TextXAlignment = Enum.TextXAlignment.Left
+	--SubTitle.TextColor3 = Color3.fromRGB(157, 157, 157)
+	--SubTitle.TextSize = 12.000
+	--SubTitle.TextXAlignment = Enum.TextXAlignment.Left
 	TabsHolder.Name = "TabsHolder"
 	TabsHolder.Parent = Main
 	TabsHolder.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
