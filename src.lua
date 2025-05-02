@@ -11,9 +11,9 @@ local shit = {
 }
 
 
-function Library:Create(name,subname,keybind)
-	if game.CoreGui:FindFirstChild(name) then
-		game.CoreGui:FindFirstChild(name):Destroy()
+function Library:Create(subname,keybind)
+	if game.CoreGui:FindFirstChild("abcdefghijklmnopqrstuvwxyz") then
+		game.CoreGui:FindFirstChild("abcdefghijklmnopqrstuvwxyz"):Destroy()
 	end
 	local xz = Instance.new("ScreenGui")
 	local Main = Instance.new("Frame")
@@ -24,7 +24,7 @@ function Library:Create(name,subname,keybind)
 	local PageHolder = Instance.new("Frame")
 	local UICorner = Instance.new("UICorner")
 	local UICorner_2 = Instance.new("UICorner")
-	xz.Name = name
+	xz.Name = "abcdefghijklmnopqrstuvwxyz"
 	xz.Parent = game.CoreGui
 	xz.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 	Main.Name = "Main"
@@ -33,24 +33,24 @@ function Library:Create(name,subname,keybind)
 	Main.BorderSizePixel = 0
 	Main.Position = UDim2.new(0, 192, 0, 224)
 	Main.Size = UDim2.new(0,700,0,500)
-        local UICorner=Instance.new("UICorner")
-        UICorner.CornerRadius=UDim.new(0,70)
-        UICorner.Parent=Main
+        local UI=Instance.new("UICorner")
+        UI.CornerRadius=UDim.new(0,70)
+        UI.Parent=Main
 	local ToggleUI=Instance.new("Frame")
-        local TextButton=Instance.new("TextButton")
+        local T=Instance.new("TextButton")
         ToggleUI.Size=UDim2.new(0,150,0,50)
         ToggleUI.Position=UDim2.new(0,0,0.5,-25)
         ToggleUI.BackgroundColor3=Color3.fromRGB(0,0,0)
         ToggleUI.BorderSizePixel=0
         ToggleUI.Parent=xz
-        TextButton.Size=UDim2.new(1,0,1,0)
-        TextButton.BackgroundTransparency=1
-        TextButton.Text="Toggle UI"
-        TextButton.Font=Enum.Font.RobotoMono
-        TextButton.TextSize=18
-        TextButton.TextColor3=Color3.fromRGB(255,255,255)
-        TextButton.TextXAlignment=Enum.TextXAlignment.Left
-        TextButton.Parent=ToggleUI
+        T.Size=UDim2.new(1,0,1,0)
+        T.BackgroundTransparency=1
+        T.Text="Toggle UI"
+        T.Font=Enum.Font.RobotoMono
+        T.TextSize=18
+        T.TextColor3=Color3.fromRGB(255,255,255)
+        T.TextXAlignment=Enum.TextXAlignment.Left
+        T.Parent=ToggleUI
         local function toggleMain()
         for _,obj in pairs(game:GetService("CoreGui"):GetChildren())do
         if obj.Name=="Main"and obj.Parent and obj.Parent.Name=="abcdefghijklmnopqrstuvwxyz"then
@@ -58,7 +58,7 @@ function Library:Create(name,subname,keybind)
         end
         end
         end
-        TextButton.MouseButton1Click:Connect(function()
+        T.MouseButton1Click:Connect(function()
         toggleMain()
         end)
 	Title.Name = "Title"
