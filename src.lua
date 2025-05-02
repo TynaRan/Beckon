@@ -11,9 +11,9 @@ local shit = {
 }
 
 
-function Library:Create(subname,keybind)
-	if game.CoreGui:FindFirstChild("abcdefghijklmnopqrstuvwxyz") then
-		game.CoreGui:FindFirstChild("abcdefghijklmnopqrstuvwxyz"):Destroy()
+function Library:Create(name,subname,keybind)
+	if game.CoreGui:FindFirstChild(name) then
+		game.CoreGui:FindFirstChild(name):Destroy()
 	end
 	local xz = Instance.new("ScreenGui")
 	local Main = Instance.new("Frame")
@@ -24,7 +24,7 @@ function Library:Create(subname,keybind)
 	local PageHolder = Instance.new("Frame")
 	local UICorner = Instance.new("UICorner")
 	local UICorner_2 = Instance.new("UICorner")
-	xz.Name = "abcdefghijklmnopqrstuvwxyz"
+	xz.Name = name
 	xz.Parent = game.CoreGui
 	xz.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 	Main.Name = "Main"
@@ -33,34 +33,9 @@ function Library:Create(subname,keybind)
 	Main.BorderSizePixel = 0
 	Main.Position = UDim2.new(0, 192, 0, 224)
 	Main.Size = UDim2.new(0,700,0,500)
-        local UI=Instance.new("UICorner")
-        UI.CornerRadius=UDim.new(0,70)
-        UI.Parent=Main
-	local ToggleUI=Instance.new("Frame")
-        local T=Instance.new("TextButton")
-        ToggleUI.Size=UDim2.new(0,150,0,50)
-        ToggleUI.Position=UDim2.new(0,0,0.5,-25)
-        ToggleUI.BackgroundColor3=Color3.fromRGB(0,0,0)
-        ToggleUI.BorderSizePixel=0
-        ToggleUI.Parent=xz
-        T.Size=UDim2.new(1,0,1,0)
-        T.BackgroundTransparency=1
-        T.Text="Toggle UI"
-        T.Font=Enum.Font.RobotoMono
-        T.TextSize=18
-        T.TextColor3=Color3.fromRGB(255,255,255)
-        T.TextXAlignment=Enum.TextXAlignment.Left
-        T.Parent=ToggleUI
-        local function toggleMain()
-        for _,obj in pairs(game:GetService("CoreGui"):GetChildren())do
-        if obj.Name=="Main"and obj.Parent and obj.Parent.Name=="abcdefghijklmnopqrstuvwxyz"then
-        obj.Visible=not obj.Visible
-        end
-        end
-        end
-        T.MouseButton1Click:Connect(function()
-        toggleMain()
-        end)
+        local UI_999=Instance.new("UICorner")
+        UI_999.CornerRadius=UDim.new(0,35)
+        UI_999.Parent=Main
 	Title.Name = "Title"
 	Title.Parent = Main
 	Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
