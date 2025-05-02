@@ -1,6 +1,7 @@
 local lib=loadstring(game:HttpGet("https://raw.githubusercontent.com/TynaRan/Beckon/refs/heads/main/src.lua"))()
 local win=lib:Create("AimViewer V1","ProVersion")
 local userTab=win:tab("User",true)
+local playerTab=win:tab("Player",true)
 local aimTab=win:tab("Aiming",true)
 local visualTab=win:tab("Visual",true)
 local configTab=win:tab("ConfigManager",true)
@@ -41,7 +42,67 @@ local highlightColor=config.highlightColor or "255,255,255"
 local effectTransparency=config.effectTransparency or 0.5
 local visualTeamCheck=config.visualTeamCheck or false
 local teamColorCheck=config.teamColorCheck or false
+local playerSpeed=config.playerSpeed or 16
+local customFOV=config.customFOV or 70
+local customGravity=config.customGravity or 196.2
+local loopEnabled=config.loopEnabled or false
+local fullbrightEnabled=config.fullbrightEnabled or false
+playerTab:input("MoveSpeed",tostring(playerSpeed),true,function(v)
+    local num=tonumber(v)
+    if num then
+        playerSpeed=num
+        config.playerSpeed=num
+        saveConfig(config)
+    end
+end)
 
+playerTab:input("CustomFOV",tostring(customFOV),true,function(v)
+    local num=tonumber(v)
+    if num then
+        customFOV=num
+        config.customFOV=num
+        saveConfig(config)
+    end
+end)
+
+playerTab:input("Gravity",tostring(customGravity),true,function(v)
+    local num=tonumber(v)
+    if num then
+        customGravity=num
+        config.customGravity=num
+        saveConfig(config)
+    end
+end)
+
+playerTab:toggle("LOOP_MODE",loopEnabled,function(v)
+    loopEnabled=v
+    config.loopEnabled=v
+    saveConfig(config)
+end)
+
+playerTab:toggle("FULLBRIGHT",fullbrightEnabled,function(v)
+    fullbrightEnabled=v
+    config.fullbrightEnabled=v
+    saveConfig(config)
+end)
+
+game:GetService("RunService").RenderStepped:Connect(function()
+    if game.Players.LocalPlayer.Character then
+        local humanoid=game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
+        if humanoid then
+            humanoid.WalkSpeed=loopEnabled and playerSpeed or 16
+        end
+    end
+    
+    workspace.CurrentCamera.FieldOfView=customFOV
+    workspace.Gravity=loopEnabled and customGravity or 196.2
+    
+    if fullbrightEnabled then
+        game:GetService("Lighting").Brightness=2
+        game:GetService("Lighting").ClockTime=14
+        game:GetService("Lighting").FogEnd=9e9
+    end
+end)
 aimTab:toggle("EnableAimbot",aimbotEnabled,function(v)
     aimbotEnabled=v
     config.aimbotEnabled=v
