@@ -1,4 +1,4 @@
--- // shitlib ... xz#1111 no need for credits jst dont claim its yours :sob:
+-- original is shitlib thank you original Creator!
 local Library = {}
 
 local Player = game:GetService("Players").LocalPlayer
