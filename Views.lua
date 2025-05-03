@@ -285,3 +285,43 @@ game:GetService("RunService").RenderStepped:Connect(function()
         highlight.Parent=nil
     end
 end)
+-- ========================
+--        CHAT SPY
+-- ========================
+local chatLogs = {}
+local chatSpyEnabled = false
+local chatHook
+
+local function createChatSpyTab()
+    local chatTab = win:tab("ChatSpy", false)
+    local chatLogDisplay = chatTab:label("Chat Logs will here")
+    local chatLogContent = ""
+    
+    chatTab:toggle("Enable ChatSpy", false, function(state)
+        chatSpyEnabled = state
+        if state then
+            chatHook = game:GetService("Players").PlayerChatted:Connect(function(player, message)
+                local logEntry = string.format("[%s]: %s\n", player.Name, message)
+                table.insert(chatLogs, logEntry)
+                chatLogContent = chatLogContent .. logEntry
+                chatLogDisplay:set("Chat Logs:\n"..chatLogContent)
+            end)
+        else
+            if chatHook then
+                chatHook:Disconnect()
+            end
+        end
+    end)
+    
+    chatTab:button("Clear Logs", function()
+        chatLogs = {}
+        chatLogContent = ""
+        chatLogDisplay:set("Chat Logs cleared")
+    end)
+    
+    chatTab:button("Copy to Clipboard", function()
+        setclipboard(table.concat(chatLogs, "\n"))
+    end)
+end
+
+createChatSpyTab()
